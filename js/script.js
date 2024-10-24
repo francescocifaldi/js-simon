@@ -42,8 +42,8 @@ myBtn.addEventListener('click', function (event) {
     for (let i = 0; i < answerList.length; i++) {
         if (copyArray.includes(parseInt(answerList[i].value))) {
             correctAnswer.push(answerList[i].value)
-            let temp = array.indexOf(answerList[i].value)
-            copyArray.shift(temp);
+            let index = copyArray.indexOf(answerList[i].value)
+            copyArray.splice(index, 1)
         }
     }
     instructionAfterElement.classList.add('d-none')
