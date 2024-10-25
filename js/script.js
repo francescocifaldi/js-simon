@@ -18,21 +18,19 @@ let copyArray = array.slice();
 
 countdown.innerHTML = tempoRimasto;
 
-//start countdown from variable
+//start countdown from variable, when reach 0, exit and change visibility of html elements
 const countdownID = setInterval(function () {
     --tempoRimasto
     countdown.innerHTML = tempoRimasto;
+    if (tempoRimasto === 0) {
+        clearInterval(countdownID)
+        countdown.classList.add('d-none')
+        instructionElement.classList.add('d-none')
+        numbersList.classList.add('d-none')
+        instructionAfterElement.classList.remove('d-none')
+        answerForm.classList.remove('d-none')
+    }
 }, intervalInMs)
-
-//exit from interval and change visibility of html elements
-setTimeout(function () {
-    clearInterval(countdownID)
-    countdown.classList.add('d-none')
-    instructionElement.classList.add('d-none')
-    numbersList.classList.add('d-none')
-    instructionAfterElement.classList.remove('d-none')
-    answerForm.classList.remove('d-none')
-}, (countdownStart * intervalInMs))
 
 //when user clicks, take all the answers and check with random array then print the result 
 myBtn.addEventListener('click', function (event) {
